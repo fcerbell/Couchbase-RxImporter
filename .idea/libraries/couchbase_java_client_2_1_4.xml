@@ -1,0 +1,10 @@
+<component name="libraryTable">
+  <library name="couchbase-java-client-2.1.4">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/couchbase-java-client-2.1.4.jar!/" />
+      <root url="jar://$PROJECT_DIR$/rxjava-1.0.4.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

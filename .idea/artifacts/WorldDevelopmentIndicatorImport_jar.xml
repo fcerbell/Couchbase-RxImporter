@@ -1,0 +1,12 @@
+<component name="ArtifactManager">
+  <artifact type="jar" build-on-make="true" name="WorldDevelopmentIndicatorImport:jar">
+    <output-path>$PROJECT_DIR$/out/artifacts/WorldDevelopmentIndicatorImport_jar</output-path>
+    <root id="archive" name="WorldDevelopmentIndicatorImport.jar">
+      <element id="module-output" name="WorldDevelopmentIndicatorImport" />
+      <element id="extracted-dir" path="$PROJECT_DIR$/couchbase-core-io-1.1.4.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$PROJECT_DIR$/couchbase-java-client-2.1.4.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$PROJECT_DIR$/rxjava-1.0.4.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$PROJECT_DIR$/commons-csv-1.2.jar" path-in-jar="/" />
+    </root>
+  </artifact>
+</component>
