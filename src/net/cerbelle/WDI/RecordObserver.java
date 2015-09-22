@@ -44,7 +44,12 @@ public class RecordObserver implements Observer<String[]> {
                 .put("CountryCode", CountryCode)
                 .put("CountryName", CountryName)
                 .put(SerieCode.replace('.', '_'), Double.valueOf(Value));
-        indicatorsDocument = JsonDocument.create(Year + "_" + CountryCode, indicatorsObject);
-        Import.WDIBucket.upsert(indicatorsDocument);
+        if (indicatorsDocument == null) {
+            indicatorsDocument = JsonDocument.create(Year + "_" + CountryCode, indicatorsObject);
+            Import.WDIBucket.insert(indicatorsDocument);
+        } else {
+            indicatorsDocument = JsonDocument.create(Year + "_" + CountryCode, indicatorsObject);
+            Import.WDIBucket.replace(indicatorsDocument);
+        }
     }
 }

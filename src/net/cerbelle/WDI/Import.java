@@ -28,7 +28,7 @@ import java.util.logging.Logger;
  */
 public class Import {
 
-    static String bucketName = "WDI_test";
+    static String bucketName = "WorldDevelopmentIndicators";
     static String clusterAddress = "192.168.56.101";
     static String clusterUsername = "Administrator";
     static String clusterPassword = "Administrator";
@@ -63,7 +63,7 @@ public class Import {
 
         // Create the bucket if not already existing
         if (!clusterManager.hasBucket(bucketName)) {
-            System.out.println("Create bucket bucket");
+            System.out.println("Create bucket");
             BucketSettings bucketSettings = new DefaultBucketSettings.Builder()
                     .type(BucketType.COUCHBASE)
                     .name(bucketName)
