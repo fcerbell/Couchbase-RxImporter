@@ -16,7 +16,6 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.io.Reader;
 import java.util.concurrent.CountDownLatch;
-import java.util.concurrent.TimeUnit;
 import java.util.logging.ConsoleHandler;
 import java.util.logging.Handler;
 import java.util.logging.Level;
@@ -171,70 +170,6 @@ public class Import {
             e.printStackTrace();
         }
 
-
-
-/*
-        String[] Values = new String[2020];
-        JsonDocument indicatorsDocument;
-        JsonObject indicatorsObject;
-        Integer nbGets = 0;
-        Integer nbLines = 0;
-        Integer nbInserts = 0;
-        Integer nbUpdates = 0;
-        Integer nbPuts = 0;
-        for (CSVRecord record : records) {
-            try {
-                nbLines++;
-                String CountryName = record.get("CountryName");
-                String CountryCode = record.get("CountryCode");
-                String SerieName = record.get("SerieName");
-                String SerieCode = record.get("SerieCode");
-                if (CountryCode.isEmpty()) continue;
-                logger.fine(CountryName + "(" + CountryCode + "), " + SerieName + "(" + SerieCode + ") : ");
-                for (Integer Year = 1960; Year != 2015; Year++) {
-                    Values[Year] = record.get(Year.toString());
-                    if (Values[Year] != null) {
-                        logger.finer("get(" + Year.toString() + "_" + CountryCode + ")");
-                        indicatorsDocument = WDIBucket.get(Year.toString() + "_" + CountryCode);
-                        nbGets++;
-                        if (indicatorsDocument == null) {
-                            logger.finer(" not found");
-                            indicatorsObject = JsonObject.empty();
-                            nbInserts++;
-                        } else {
-                            logger.finer(" found");
-                            indicatorsObject = indicatorsDocument.content();
-                            nbUpdates++;
-                        }
-                        indicatorsObject
-                                .put("Year", Year)
-                                .put("CountryCode", CountryCode)
-                                .put("CountryName", CountryName)
-                                .put(SerieCode.replace('.', '_'), Double.valueOf(Values[Year]));
-                        indicatorsDocument = JsonDocument.create(Year.toString() + "_" + CountryCode, indicatorsObject);
-                        logger.fine("upsert("+indicatorsDocument.content().get("Year")+"_"+indicatorsDocument.content().get("CountryCode")+") : "
-                                +SerieCode.replace('.', '_') + "=" + Double.valueOf(Values[Year]));
-                        WDIBucket.upsert(indicatorsDocument);
-                        nbPuts++;
-                        logger.finer(Year.toString() + "=" + Double.valueOf(Values[Year]) + " (" + Values[Year] + "), ");
-                    }
-                }
-                if (nbLines%1000==0) {
-                    System.out.print("nbLines = " + nbLines);
-                    System.out.print(", nbGets = " + nbGets);
-                    System.out.print(", nbInserts = " + nbInserts);
-                    System.out.print(", nbUpdates = " + nbUpdates);
-                    System.out.println(", nbPuts = " + nbPuts);
-
-                }
-
-            } catch (Exception e) {
-                System.out.println(record);
-                e.printStackTrace();
-                break;
-            }
-        }
-*/
 
 // Disconnect and clear all allocated resources
         cluster.disconnect();
